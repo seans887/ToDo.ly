@@ -1,0 +1,12 @@
+form {
+  width: 300px;
+}
+
+.done {
+  text-decoration: line-through;
+  color: red;
+}
+
+li span {
+  cursor: pointer;
+}
