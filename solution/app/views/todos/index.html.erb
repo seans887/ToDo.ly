@@ -1,0 +1,21 @@
+<h1>Todos!</h1>
+<form>
+  <fieldset>
+    <legend>New Todo</legend>
+    <label>
+      Task
+      <input type="text" name="task" />
+    </label>
+    <button>Save</button>
+  </fieldset>
+</form>
+
+<ul>
+  <% @todos.each do |todo| %>
+    <li data-todo-id="<%= todo.id %>">
+      <%= todo.task %>
+      <%= check_box_tag :done, 'yes', todo.done %>
+      <span>&times;</span>
+    </li>
+  <% end %>
+</ul>

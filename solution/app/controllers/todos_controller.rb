@@ -13,9 +13,15 @@ class TodosController < ApplicationController
     @todo = Todo.new(todo_params)
 
     if @todo.save
-      render json: @todo
+      respond_to do |format|
+        format.html
+        format.json { render json: @todo }
+      end
     else
-      render status: 400, nothing: true
+      respond_to do |format|
+        format.html { render :new }
+        format.json { render status: 400, nothing: true }
+      end
     end
   end
 
@@ -23,7 +29,7 @@ class TodosController < ApplicationController
     @todo = Todo.find(params[:id])
 
     if @todo.update(todo_params)
-      render status: 200, json: @todo
+      render status: 200, nothing: true
     else
       render status: 400, nothing: true
     end
